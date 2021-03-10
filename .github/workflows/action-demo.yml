@@ -31,5 +31,36 @@ jobs:
       - name: List GITHUB_SHA env variables
         run: echo $GITHUB_SHA
 
-      - name: curl to coda
+      - name: curl to coda (list tables)
         run: curl --location 'https://coda.io/apis/v1/docs/LjcI0v6O0t/tables' --header "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
+        
+      - name: curl to coda (add row)
+        run: > 
+              curl -X PUT -H "Content-Type:application/json"
+              -d '{"rows": [ 
+                            {
+                              "cells": [
+                                {
+                                  "column": "Sha",
+                                  "value": $GITHUB_SHA
+                                },
+                          {
+                                  "column": "Committer,
+                                  "value": $GITHUB_ACTOR
+                                },
+                          {
+                                  "column": "Message",
+                                  "value": "GitHub API push..."
+                                }
+                              ]
+                            }
+                          ]
+                        }' 
+              --location 'https://coda.io/apis/v1/docs/LjcI0v6O0t/tables/grid-sync-1013-Commit/rows' 
+              --header "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
+
+
+
+
+
+
