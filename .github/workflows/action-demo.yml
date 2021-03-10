@@ -42,13 +42,13 @@ jobs:
                               "cells": [
                                 {
                                   "column": "Sha",
-                                  "value": $GITHUB_SHA
+                                  "value": "$GITHUB_SHA"
                                 },
-                          {
+                                {
                                   "column": "Committer,
-                                  "value": $GITHUB_ACTOR
+                                  "value": "$GITHUB_ACTOR"
                                 },
-                          {
+                                {
                                   "column": "Message",
                                   "value": "GitHub API push..."
                                 }
