@@ -34,12 +34,12 @@ jobs:
       - name: curl to coda (list tables)
         run: curl --location 'https://coda.io/apis/v1/docs/LjcI0v6O0t/tables' --header "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
         
-      - name: List table columns
-        run: curl --location https://coda.io/apis/v1/docs/LjcI0v6O0t/tables/grid-sync-1013-Commit/columns --header "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
+      - name: curl to coda (list table columns)
+        run: curl --location https://coda.io/apis/v1/docs/LjcI0v6O0t/tables/grid-vUtbKxZSRl/columns --header "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
         
       - name: curl to coda (add row)
         run: > 
-              curl -X PUT -H "Content-Type:application/json" -L 'https://coda.io/apis/v1/docs/LjcI0v6O0t/tables/grid-sync-1013-Commit/rows' -H "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
+              curl -X PUT -H "Content-Type:application/json" -L 'https://coda.io/apis/v1/docs/LjcI0v6O0t/tables/grid-vUtbKxZSRl/rows' -H "Authorization:Bearer ${{ secrets.CODA_API_KEY }}"
               -d '{"rows": [{"cells": [{ "column": "c-4pk_fGxZNs", "value": "$GITHUB_SHA" }, { "column": "c-pXbCyQXzvy", "value": "$GITHUB_ACTOR" }, { "column": "c-CJhixDPYYf", "value": "GitHub API push..." } ]}]}'    
 
 
